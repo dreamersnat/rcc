@@ -57,3 +57,15 @@ export function ComponentName({}: Props) {
   return <div className={styles.container}></div>;
 }
 ```
+
+## Extension Settings
+
+No additional settings are required for this extension. The generated files use default templates that follow React and TypeScript best practices.
+
+## Contribution
+
+Feel free to fork and contribute to this project by creating a pull request. Any contributions to improve functionality or add features are welcome!
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
