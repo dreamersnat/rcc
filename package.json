@@ -1,0 +1,79 @@
+{
+  "name": "react-component-creator",
+  "displayName": "React Component Creator",
+  "description": "Create React component files via context menu or command palette",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dreamersnat/rcc.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:react-component-creator.createComponent"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "react-component-creator.createComponent",
+        "title": "Create React Component"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "react-component-creator.createComponent",
+          "group": "2_workspace"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "React Component Creator",
+      "properties": {
+        "reactComponentCreator.componentsFolder": {
+          "type": "string",
+          "default": "components",
+          "description": "Name of the folder where components are stored (used when creating from command palette)"
+        },
+        "reactComponentCreator.useTypescript": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use TypeScript (.tsx) instead of JavaScript (.jsx)"
+        },
+        "reactComponentCreator.useScss": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use SCSS (.scss) instead of CSS (.css)"
+        },
+        "reactComponentCreator.createIndexFile": {
+          "type": "boolean",
+          "default": true,
+          "description": "Create an index.ts file for exporting the component"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "esbuild": "^0.23.1",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
