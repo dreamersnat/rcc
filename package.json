@@ -3,10 +3,6 @@
   "displayName": "React Component Creator",
   "description": "Create React component files via context menu or command palette",
   "version": "0.0.1",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:dreamersnat/rcc.git"
-  },
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -61,19 +57,19 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-    "watch": "tsc -watch -p ./",
+    "compile": "node ./node_modules/esbuild/bin/esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "node ./node_modules/esbuild/bin/esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/node": "18.x",
     "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "esbuild": "^0.23.1",
     "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "esbuild": "^0.19.0"
   }
 }
