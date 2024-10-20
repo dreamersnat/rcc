@@ -1,71 +1,63 @@
 # React Component Creator
 
-A Visual Studio Code extension that allows users to quickly generate a full React component folder structure with the necessary files (`index.ts`, `.module.scss`, and `.tsx` component file). Streamline your React development workflow by creating components effortlessly through the command palette or context menu.
+React Component Creator is a Visual Studio Code extension that simplifies the process of creating new React components. With this extension, you can quickly generate a new component folder structure, including a TypeScript/JavaScript file, a CSS/SCSS module, and an optional index file.
 
 ## Features
 
-- Create a React component folder with:
-  - `index.ts` for cleaner imports
-  - A `.tsx` component file with the default component structure
-  - A `.module.scss` file for scoped styling
-- Easily accessible through:
-  - Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS)
-  - Context Menu (Right-click on the file explorer)
+- Create React components via the context menu or command palette
+- Customizable file types (TypeScript/JavaScript and CSS/SCSS)
+- Optional index file creation for easy exporting
+- Works with any folder structure
 
 ## Installation
 
-1. Download and install the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/).
-2. Once installed, you can use the extension through the command palette or context menu.
+Since this extension is not available on the Visual Studio Code Marketplace, you'll need to install it manually using a VSIX file.
+
+1. Download the `react-component-creator-0.0.1.vsix` file (or the latest version) from the project's release page.
+
+2. Open Visual Studio Code
+
+3. Go to the Extensions view by clicking on the square icon in the left sidebar or pressing `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (Mac).
+
+4. Click on the "..." at the top of the Extensions view and select "Install from VSIX..."
+
+5. Navigate to the downloaded VSIX file, select it, and click "Install"
+
+6. Restart Visual Studio Code if prompted
 
 ## Usage
 
-### Command Palette
+1. Right-click on any folder in the Explorer view where you want to create a new component
+2. Select "Create React Component" from the context menu
+3. Enter a name for your new component when prompted
+4. The extension will create a new folder with the component name, containing:
+   - A .tsx (or .jsx) file with a basic React component
+   - A .module.scss (or .module.css) file
+   - An index.ts file (if enabled in settings)
 
-1. Open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS).
-2. Type `Create React Component` and select the option.
-3. Enter the component name.
-4. The extension will create a new folder in the selected directory with the following files:
-   - `ComponentName.tsx`
-   - `ComponentName.module.scss`
-   - `index.ts`
+Alternatively, you can use the Command Palette:
 
-### Context Menu
+1. Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
+2. Type "Create React Component" and select the command
+3. Enter a name for your new component
+4. The component will be created in the configured components folder
 
-1. In the VS Code file explorer, right-click on the folder where you want to create the component.
-2. Select `Create React Component` from the context menu.
-3. Enter the component name.
-4. The extension will generate the same folder structure and files as above.
+## Configuration
 
-### File Structure Example
+You can customize the behavior of React Component Creator through VS Code settings:
 
-After generating the component, the following structure will be created:
+1. Open Settings (File > Preferences > Settings)
+2. Search for "React Component Creator"
+3. Adjust the following settings:
+   - `reactComponentCreator.componentsFolder`: Name of the folder where components are stored (used when creating from command palette)
+   - `reactComponentCreator.useTypescript`: Use TypeScript (.tsx) instead of JavaScript (.jsx)
+   - `reactComponentCreator.useScss`: Use SCSS (.scss) instead of CSS (.css)
+   - `reactComponentCreator.createIndexFile`: Create an index.ts file for exporting the component
 
-/ComponentName |-- ComponentName.tsx |-- ComponentName.module.scss |-- index.ts
+## Feedback and Contributions
 
-The `index.ts` file will automatically export the component for cleaner and more convenient imports.
-
-### Default Component Template
-
-The `.tsx` component file will be created with a default functional component template, following best practices in React development. For example:
-
-```tsx
-import styles from "./ComponentName.module.scss";
-
-interface Props {}
-
-export function ComponentName({}: Props) {
-  return <div className={styles.container}></div>;
-}
-```
-
-## Extension Settings
-
-No additional settings are required for this extension. The generated files use default templates that follow React and TypeScript best practices.
-
-## Contribution
-
-Feel free to fork and contribute to this project by creating a pull request. Any contributions to improve functionality or add features are welcome!
+If you encounter any issues or have suggestions for improvements, please file an issue on the project's GitHub repository. Contributions are always welcome!
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
