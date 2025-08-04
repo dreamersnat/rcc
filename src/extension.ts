@@ -68,12 +68,14 @@ function createReactComponentFiles(
 interface Props {
 }
 
-export function ${componentName}({ }: Props) {
+export const ${componentName} = ({ }: Props) => {
     return (
         <div className={styles.container}>
         </div>
     );
 };
+
+
 `;
   fs.writeFileSync(
     path.join(folderPath, `${componentName}.${fileExtension}`),
