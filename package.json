@@ -57,8 +57,8 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "node ./node_modules/esbuild/bin/esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-    "watch": "node ./node_modules/esbuild/bin/esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "compile": "npx esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "npx esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --watch",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
@@ -66,6 +66,7 @@
   "devDependencies": {
     "@types/vscode": "^1.85.0",
     "@types/node": "18.x",
+    "@types/mocha": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",

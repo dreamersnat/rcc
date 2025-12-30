@@ -16,9 +16,15 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand(
       "react-component-creator.createComponent",
       async (resource: vscode.Uri) => {
-        const config = vscode.workspace.getConfiguration(
+        const workspaceConfig = vscode.workspace.getConfiguration(
           "reactComponentCreator"
-        ) as ComponentCreatorConfig;
+        );
+        const config: ComponentCreatorConfig = {
+          componentsFolder: workspaceConfig.get<string>("componentsFolder", "components"),
+          useTypescript: workspaceConfig.get<boolean>("useTypescript", true),
+          useScss: workspaceConfig.get<boolean>("useScss", true),
+          createIndexFile: workspaceConfig.get<boolean>("createIndexFile", true),
+        };
 
         let targetDirectory: string;
         if (resource && fs.statSync(resource.fsPath).isDirectory()) {
